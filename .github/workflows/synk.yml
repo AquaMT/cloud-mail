@@ -39,5 +39,5 @@ jobs:
       - name: Sync dev
         run: |
           git checkout -B dev origin/dev
-          git reset --hard upstream/dev
-          git push origin dev --force
+          git merge upstream/dev --no-edit
+          git push origin dev
