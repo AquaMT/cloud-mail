@@ -1,4 +1,4 @@
-name: Upstream Sync
+name: Sync upstream
 
 on:
   schedule:
@@ -32,12 +32,12 @@ jobs:
 
       - name: Sync main
         run: |
-          git checkout main
-          git reset --hard upstream/main
-          git push origin main --force
+          git checkout -B main origin/main
+          git merge upstream/main --no-edit
+          git push origin main
 
       - name: Sync dev
         run: |
-          git checkout dev
+          git checkout -B dev origin/dev
           git reset --hard upstream/dev
           git push origin dev --force
